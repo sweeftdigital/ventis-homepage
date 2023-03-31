@@ -1,0 +1,12 @@
+[
+   {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+         "namespace": "android_app",
+         "package_name": "com.sweeftwallet.androidapp",
+         "sha256_cert_fingerprints": [
+            "C9:EF:FC:36:15:EE:C5:02:4D:8E:A0:8C:32:F8:26:31:5C:B1:2E:24:8C:29:C3:F9:AB:EF:04:C1:7F:45:C0:ED"
+         ]
+      }
+   }
+]
