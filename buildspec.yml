@@ -5,14 +5,14 @@ phases:
     commands:
       - echo Building and tagging Docker image
       - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 537486183366.dkr.ecr.eu-central-1.amazonaws.com
-      - docker build -t policy-prod .
-      - docker tag policy-prod:latest 537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy-prod:latest
+      - docker build -t policy .
+      - docker tag policy:latest 537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy:latest
 
   post_build:
     commands:
       - echo Pushing to ECR
-      - docker push 537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy-prod:latest
-      - printf '[{"name":"policy-prod","imageUri":"537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy-prod:latest"}]' > imagedefinitions.json
+      - docker push 537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy:latest
+      - printf '[{"name":"policy","imageUri":"537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy:latest"}]' > imagedefinitions.json
 
 artifacts:
   files:
