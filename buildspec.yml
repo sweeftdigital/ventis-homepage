@@ -1,16 +1,19 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
   build:
     commands:
-      - docker build -t $IMAGE .
-      - echo rename image
-      - docker tag $IMAGE $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE
-      - docker image ls
+      - echo Building and tagging Docker image
+      - aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 537486183366.dkr.ecr.eu-central-1.amazonaws.com
+      - docker build -t policy-prod .
+      - docker tag policy-prod:latest 537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy-prod:latest
+
   post_build:
     commands:
-      - echo finish
+      - echo Pushing to ECR
+      - docker push 537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy-prod:latest
+      - printf '[{"name":"policy-prod","imageUri":"537486183366.dkr.ecr.eu-central-1.amazonaws.com/policy-prod:latest"}]' > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json

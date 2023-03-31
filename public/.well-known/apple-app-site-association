@@ -1,0 +1,14 @@
+{
+   "applinks": {
+      "apps": [],
+      "details": [
+         {
+            "appID": "G4ZA847WVB.com.sweeftwallettest.iosapp",
+            "paths": [
+               "NOT /_/*",
+               "/*"
+            ]
+         }
+      ]
+   }
+}
