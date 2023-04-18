@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 
-export function MerchantPaymentRedirectionToMobile() {
+function MerchantPaymentRedirectionToMobile() {
   useEffect(() => {
     if (getMobileOperatingSystem() === "IOS") {
       window.location.replace(
@@ -16,6 +16,8 @@ export function MerchantPaymentRedirectionToMobile() {
 
   return <p></p>;
 }
+
+export default MerchantPaymentRedirectionToMobile;
 
 function getMobileOperatingSystem() {
   var userAgent = navigator.userAgent || navigator.vendor || window?.opera;
