@@ -14,7 +14,7 @@ export function MerchantPaymentRedirectionToMobile() {
     }
   }, []);
 
-  return <div></div>;
+  return <p></p>;
 }
 
 function getMobileOperatingSystem() {
